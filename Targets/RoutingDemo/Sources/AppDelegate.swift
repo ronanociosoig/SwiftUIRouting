@@ -18,19 +18,30 @@ struct Application: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $router.path) {
-                
                 HomeView(homeRouter: HomeRouter(with: router))
                     .withHomeRoutes()
                     .withBackpackRoutes()
-                    .navigationDestination(for: HomeExit.self) { destination in
-                                            switch destination {
-                                            case .showCatch:
-                                                    CatchView()
-                                                case .showBackpack:
-                                                BackpackView(backpackRouter: BackpackRouter(with: self.router))
-                                            }
-                                        }
+//                    .navigationDestination(for: AppRouteExit.self, destination: { _ in
+//                        CatchView()
+//                    })
+                    .navigationDestination(for: ModuleExit.self) { destination in
+                        switch destination {
+                        case .showCatch:
+                            CatchView()
+                        case .showBackpack:
+                            BackpackView(backpackRouter: BackpackRouter(with: self.router))
+                        }
+                    }
+
             }
         }
     }
 }
+
+
+//    .navigationDestination(for: BackpackExit.self) { destination in
+//        switch destination {
+//        case .showCatch:
+//            CatchView()
+//        }
+//    }

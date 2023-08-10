@@ -1,11 +1,6 @@
 import SwiftUI
 import Common
 
-enum HomeExit: Hashable {
-    case showCatch
-    case showBackpack
-}
-
 enum HomeRoute: Hashable {
     case showHome
 }
@@ -26,10 +21,10 @@ class HomeRouter: ModuleRouter {
     }
     
     func showCatchScene() {
-        appRouter.navigate(to: HomeExit.showCatch)
+        appRouter.navigate(to: ModuleExit.showCatch)
     }
     
     func showBackpackScene() {
-        appRouter.navigate(to: HomeExit.showBackpack)
+        appRouter.navigate(to: ModuleExit.showBackpack)
     }
 }

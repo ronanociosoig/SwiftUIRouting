@@ -17,6 +17,10 @@ public struct BackpackView: View {
                 self.backpackRouter.showDetails()
             }
             Spacer()
+            
+            Button("Catch Another Pokemon") {
+                self.backpackRouter.showCatch()
+            }
         }
         .padding()
     }

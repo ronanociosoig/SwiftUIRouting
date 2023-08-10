@@ -7,8 +7,9 @@ enum BackpackRoute: Hashable {
 }
 
 // Enum for external routes (exits from this module)
-enum BackpackExit: Hashable {
-    case home
+public enum BackpackExit: Hashable {
+    // case showHome
+    case showCatch
 }
 
 // The module router
@@ -29,5 +30,13 @@ public class BackpackRouter: ModuleRouter {
     
     func showDetails() {
         navigate(to: .details)
+    }
+    
+    func showCatch() {
+        pop()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(600)) {
+            self.appRouter.navigate(to: ModuleExit.showCatch)
+        }
     }
 }
